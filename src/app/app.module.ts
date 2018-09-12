@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { ApplicationDataService } from './application-data.service';
@@ -23,6 +23,10 @@ import { SelectChannelComponent } from './select-channel/select-channel.componen
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Ng2Webstorage } from 'ngx-webstorage';
+import { WorkspaceListComponent } from './workspace-list/workspace-list.component';
+import { AuthInterceptor } from './http.interceptor';
+import { LoginService } from './login.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AddAppComponent,
     ApplicationsComponent,
     SelectChannelComponent,
-    LoginComponent
+    LoginComponent,
+    WorkspaceListComponent
   ],
   imports: [
     AppRoutingModule,
@@ -49,9 +54,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatIconModule,
     MatCheckboxModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2Webstorage
   ],
-  providers: [ApplicationDataService],
+  providers: [ApplicationDataService, 
+    LoginService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

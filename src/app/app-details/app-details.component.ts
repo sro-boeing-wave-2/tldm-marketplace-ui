@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ApplicationDataService } from '../application-data.service';
 import { Application } from '../application';
+import { LocalStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-app-details',
@@ -12,7 +13,7 @@ export class AppDetailsComponent implements OnInit {
   selectedId;
   application;
 
-  constructor(private activatedroute: ActivatedRoute, private applicationdataservice: ApplicationDataService, private router: Router) { }
+  constructor(private activatedroute: ActivatedRoute, private applicationdataservice: ApplicationDataService, private router: Router, private localStorage: LocalStorageService) { }
 
   ngOnInit() {
     this.activatedroute.paramMap.subscribe((params: ParamMap) => {
@@ -21,7 +22,9 @@ export class AppDetailsComponent implements OnInit {
     this.applicationdataservice.getById(this.selectedId).subscribe(data => this.application=data);
   }
 
-  install() {
+  install(id) {
+    this.localStorage.store("appId", id);
+    console.log(this.localStorage.retrieve("appId"));
     this.router.navigate(['login']);
   }
 

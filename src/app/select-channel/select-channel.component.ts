@@ -5,6 +5,7 @@ import { User } from '../user';
 import { ApplicationDataService } from '../application-data.service';
 import { Router } from '@angular/router';
 import { UserChannel } from '../user-channel';
+import { LocalStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-select-channel',
@@ -12,11 +13,11 @@ import { UserChannel } from '../user-channel';
   styleUrls: ['./select-channel.component.css']
 })
 export class SelectChannelComponent implements OnInit {
-  workspaceName: string = "TLDM";
-  userName: string = "rishabh120296@gmail.com";
+  workspaceName: string = this.localStorage.retrieve("workspace");//"TLDM";
+  userName: string = this.localStorage.retrieve("email"); //"rishabh120296@gmail.com";
   channels: Channel[];
   channelSelected;
-  appId=7;
+  appId=this.localStorage.retrieve("appId");
   application;
   botUser: User = {
     id: "60681125-e117-4bb2-9287-eb840c4cf67e",
@@ -33,11 +34,19 @@ export class SelectChannelComponent implements OnInit {
     emailId: "tldm-github-bot@gmail.com",
   };
 
-  constructor(private router: Router, private _chatdataservice: ChatDataService, private _appicationdataservice: ApplicationDataService) { }
+  constructor(private router: Router, private _chatdataservice: ChatDataService, private _appicationdataservice: ApplicationDataService, private localStorage: LocalStorageService) { }
 
   ngOnInit() {
-    this._chatdataservice.getChannels(this.workspaceName, this.userName).subscribe(data => this.channels = data);
-    this._appicationdataservice.getById(this.appId).subscribe(data => this.application = data);
+    console.log(this.localStorage.retrieve("appId"));
+    console.log(+this.localStorage.retrieve("appId"));
+    this._chatdataservice.getChannels(this.workspaceName, this.userName).subscribe(data => {
+      console.log("Data From Chat Team", data);
+      this.channels = data;
+    });
+    this._appicationdataservice.getById(this.appId).subscribe(data => {
+      console.log("Data From Marketplace Team", data);
+      this.application = data;
+    });
   }
 
   addBot() {
@@ -46,5 +55,6 @@ export class SelectChannelComponent implements OnInit {
       this._chatdataservice.addBot(selectedChannel, this.botUserChannel).subscribe();
     }
     this.router.navigate([this.application.appUrl]);
+    //this.router.navigateByUrl(this.application.appUrl);
   }
 }

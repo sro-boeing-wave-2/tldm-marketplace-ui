@@ -1,32 +1,30 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
+import { LocalStorageService } from 'ngx-webstorage';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  AccessToken: string;
-  private loggedEmailAddress = new BehaviorSubject<string>("");
-  private allWorkspaces = new BehaviorSubject<string[]>([""]);
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
 
-  currentEmail = this.loggedEmailAddress.asObservable();
-  workspaces = this.allWorkspaces.asObservable();
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private localStoarge: LocalStorageService) { }
   public obtainToken(credentials) {
-    return this.http.post("http://172.23.238.206:5000/api/onboard/login", credentials);
+    return this.http.post("http://172.23.238.165:7000/onboard/login", credentials, this.httpOptions);
   }
 
   public getValues(httpOptions) {
     return this.http.get('http://localhost:5000/api/values', httpOptions);
   }
 
-  public storeUsername(email: string) {
-    this.loggedEmailAddress.next(email);
-    console.log(email);
+  public getAllWorkspaces() {
+    let email= this.localStoarge.retrieve("email");
+    return this.http.get(`http://172.23.238.165:7000/onboard/${email}`, this.httpOptions);
   }
 
-  public storeWorkspace(workspaces: string[]) {
-    this.allWorkspaces.next(workspaces);
-  }
 }

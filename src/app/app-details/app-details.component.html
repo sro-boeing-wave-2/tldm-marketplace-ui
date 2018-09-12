@@ -3,7 +3,7 @@
     <mat-card class="main-card">
       <img mat-card-image [src]="application.logoUrl">
       <mat-card-actions>
-        <button (click)= "install()" mat-stroked-button color="primary">Install</button>
+        <button (click)= "install(application.id)" mat-stroked-button color="primary">Install</button>
       </mat-card-actions>
     </mat-card>
   </mat-grid-tile>

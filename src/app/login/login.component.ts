@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
+import { LocalStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-login',
@@ -12,23 +13,19 @@ export class LoginComponent implements OnInit {
   hide: boolean=true;
   // @Output() sendDataToChild = new EventEmitter();
   loginForm = this.fb.group({
-    Username: [''],
-    Password: [''],
-    WorkspaceName: [''],
+    EmailId: [''],
+    Password: ['']
   });
 
-  constructor(private fb: FormBuilder, private appdataservice: LoginService,private router: Router) { }
+  constructor(private fb: FormBuilder, private appdataservice: LoginService,private router: Router, private localStorage: LocalStorageService) { }
   ngOnInit() {
   }
 
   onSubmit() {
     this.appdataservice.obtainToken(this.loginForm.value).subscribe(data => {
-      this.appdataservice.AccessToken=data['token'];
-      console.log(this.loginForm.value);
-      console.log(this.loginForm.value.Username);
-      this.appdataservice.storeUsername(this.loginForm.value.Username);
-      console.log(data);
-      this.router.navigate(['/allchannels']);
+      this.localStorage.store("token", data["token"]);
+      this.localStorage.store("email", this.loginForm.value.EmailId);
+      this.router.navigate(['/workspaces']);
     });
   }
 }

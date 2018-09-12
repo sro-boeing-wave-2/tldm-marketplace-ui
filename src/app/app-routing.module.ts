@@ -8,6 +8,7 @@ import { notEqual } from 'assert';
 import { ApplicationsComponent } from './applications/applications.component';
 import { SelectChannelComponent } from './select-channel/select-channel.component';
 import { LoginComponent } from './login/login.component';
+import { WorkspaceListComponent } from './workspace-list/workspace-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/apps', pathMatch: 'full' },
@@ -16,6 +17,9 @@ const routes: Routes = [
   { path: 'details/:id', component: AppDetailsComponent },
   { path: 'channels', component: SelectChannelComponent },
   { path: 'login', component: LoginComponent },
+  {
+    path: 'workspaces', component: WorkspaceListComponent
+  }
 ];
 
 @NgModule({

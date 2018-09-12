@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { environment } from '../environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Channel } from './channel';
 import { map, catchError } from 'rxjs/operators';
 import { User } from './user';
@@ -46,7 +46,7 @@ export class ChatDataService {
 
   private handleError(error: Response | any) {
     console.error('ApiService::handleError', error);
-    return Observable.throw(error);
+    return throwError(error);
   }
 }
 
