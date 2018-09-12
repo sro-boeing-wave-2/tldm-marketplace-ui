@@ -1,0 +1,21 @@
+<mat-grid-list cols="3" rowHeight="100%">
+  <mat-grid-tile></mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card>
+      <mat-card-title>Login</mat-card-title>
+      <mat-card-subtitle>Enter your TLDM Login credentials to install the integration</mat-card-subtitle>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="example-container">
+          <mat-form-field>
+            <input matInput placeholder="Username (Email)" formControlName="Username" required>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="Password" required>
+          </mat-form-field>
+          <button mat-raised-button color="primary" type="submit">Login</button>
+        </div>
+      </form>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile>
+</mat-grid-list>
