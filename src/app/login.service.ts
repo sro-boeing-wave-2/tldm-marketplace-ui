@@ -2,11 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { LocalStorageService } from 'ngx-webstorage';
+import { environment } from '../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+  private onboard_url = environment.onboardUrl;
+
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -15,16 +18,12 @@ export class LoginService {
 
   constructor(private http: HttpClient, private localStoarge: LocalStorageService) { }
   public obtainToken(credentials) {
-    return this.http.post("http://172.23.238.165:7000/onboard/login", credentials, this.httpOptions);
-  }
-
-  public getValues(httpOptions) {
-    return this.http.get('http://localhost:5000/api/values', httpOptions);
+    return this.http.post(`${this.onboard_url}/login`, credentials, this.httpOptions);
   }
 
   public getAllWorkspaces() {
     let email= this.localStoarge.retrieve("email");
-    return this.http.get(`http://172.23.238.165:7000/onboard/${email}`, this.httpOptions);
+    return this.http.get(`${this.onboard_url}/${email}`, this.httpOptions);
   }
 
 }
