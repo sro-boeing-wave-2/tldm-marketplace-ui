@@ -8,7 +8,7 @@ notifications:
   email:
     on_success: always
     on_failure: always
-  slack: srboeingdotnet:GhCzs3W4Gj7eaQ2pLNwIWVCa
+  slack: srboeingdotnet:UIU3Bl3s8QViLrC2yS7GV9NI
 mono: none
 before_install:
   - export CHROME_BIN=chromium-browser
