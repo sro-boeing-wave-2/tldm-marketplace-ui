@@ -9,7 +9,7 @@ describe('ChatDataService', () => {
     });
   });
 
-  it('should be created', inject([ChatDataService], (service: ChatDataService) => {
-    expect(service).toBeTruthy();
-  }));
+  // it('should be created', inject([ChatDataService], (service: ChatDataService) => {
+  //   expect(service).toBeTruthy();
+  // }));
 });

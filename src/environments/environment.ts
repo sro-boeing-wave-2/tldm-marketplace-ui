@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   apiUrl: 'http://172.23.238.180:9999/api',
-  chatApiUrl: 'http://172.23.238.165:7000/connect/api',
-  onboardUrl: 'http://172.23.238.165:7000/onboard'
+  chatApiUrl: 'http://172.23.238.206:7000/connect/api',
+  onboardUrl: 'http://172.23.238.206:7000/onboard'
 };
 
 /*

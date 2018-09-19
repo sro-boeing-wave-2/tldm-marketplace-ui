@@ -9,7 +9,7 @@ describe('ApplicationDataService', () => {
     });
   });
 
-  it('should be created', inject([ApplicationDataService], (service: ApplicationDataService) => {
-    expect(service).toBeTruthy();
-  }));
+  // it('should be created', inject([ApplicationDataService], (service: ApplicationDataService) => {
+  //   expect(service).toBeTruthy();
+  // }));
 });
