@@ -17,9 +17,12 @@ export class AppDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.activatedroute.paramMap.subscribe((params: ParamMap) => {
-      this.selectedId = parseInt(params.get('id'));
+      this.selectedId = params.get('id');
     });
-    this.applicationdataservice.getById(this.selectedId).subscribe(data => this.application=data);
+    this.applicationdataservice.getById(this.selectedId).subscribe(data => {
+      this.application=data; 
+      this.localStorage.store("bot-email-id", data.emailId);
+    });
   }
 
   install(id) {

@@ -7,14 +7,19 @@ export class AuthInterceptor implements HttpInterceptor
 {
     constructor(private localStorage: LocalStorageService) {}
     intercept(req: HttpRequest<any>, next: HttpHandler) {
+        const addingDefaultHeaders = req.clone({
+            headers: req.headers.set("Content-Type", "application/json")
+        });
         const token = this.localStorage.retrieve("token");
+        console.log("From Interceptor");
         if(token) {
-            const cloned = req.clone({
-                headers: req.headers.set("Authorization", "Bearer "+token)
+            console.log("Adding Auth Header");
+            const cloned = addingDefaultHeaders.clone({
+                headers: req.headers.append("Authorization", `Bearer ${token}`)
             });
             return next.handle(cloned);
         } else {
-            return next.handle(req);
+            return next.handle(addingDefaultHeaders);
         }
     }
 }

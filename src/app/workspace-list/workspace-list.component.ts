@@ -13,7 +13,10 @@ export class WorkspaceListComponent implements OnInit {
   constructor(private loginservice: LoginService, private localStorage: LocalStorageService, private router: Router) { }
 
   ngOnInit() {
-    this.loginservice.getAllWorkspaces().subscribe(data => this.workspaces = data);
+    this.loginservice.getAllWorkspaces().subscribe(data => {
+      this.workspaces = data;
+      console.log(data);
+    }, error => console.log(error));
   }
 
   getChannels(workspace) 

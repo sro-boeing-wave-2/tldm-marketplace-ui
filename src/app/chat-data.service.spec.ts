@@ -1,13 +1,13 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { ChatDataService } from './chat-data.service';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('ChatDataService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [ChatDataService],
-      imports: [HttpModule]
+      imports: [HttpClientModule]
     });
   });
 

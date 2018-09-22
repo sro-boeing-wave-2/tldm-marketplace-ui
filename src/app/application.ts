@@ -1,6 +1,7 @@
 export class Application {
   id: number;
   name: string;
+  emailId: string;
   info: string;
   developer: string;
   appUrl: string;
