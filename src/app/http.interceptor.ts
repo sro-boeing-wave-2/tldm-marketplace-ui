@@ -11,9 +11,7 @@ export class AuthInterceptor implements HttpInterceptor
             headers: req.headers.set("Content-Type", "application/json")
         });
         const token = this.localStorage.retrieve("token");
-        console.log("From Interceptor");
         if(token) {
-            console.log("Adding Auth Header");
             const cloned = addingDefaultHeaders.clone({
                 headers: req.headers.append("Authorization", `Bearer ${token}`)
             });
