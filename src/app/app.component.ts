@@ -7,7 +7,6 @@ import { Application } from './application'
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   providers: [ApplicationDataService]
-
 })
 export class AppComponent {
 
@@ -17,6 +16,4 @@ export class AppComponent {
   onAddApplication(application) {
 
   }
-
-
 }
