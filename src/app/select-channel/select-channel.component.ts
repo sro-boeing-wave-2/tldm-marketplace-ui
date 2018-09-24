@@ -1,12 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ChatDataService } from '../chat-data.service';
-import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
 import { Channel } from '../channel';
 import { User } from '../user';
 import { ApplicationDataService } from '../application-data.service';
-import { Router } from '@angular/router';
 import { UserChannel } from '../user-channel';
 import { LocalStorageService } from 'ngx-webstorage';
+import { HubService } from '../hub.service';
 
 @Component({
   selector: 'app-select-channel',
@@ -14,7 +13,6 @@ import { LocalStorageService } from 'ngx-webstorage';
   styleUrls: ['./select-channel.component.css']
 })
 export class SelectChannelComponent implements OnInit {
-  hubConnection: HubConnection;
   workspaceName: string = this.localStorage.retrieve("workspace");//"TLDM";
   userName: string = this.localStorage.retrieve("email"); //"rishabh120296@gmail.com";
   botEmailId: string = this.localStorage.retrieve("bot-email-id");
@@ -38,16 +36,11 @@ export class SelectChannelComponent implements OnInit {
   };
 
   constructor(
-    private router: Router, 
     private _chatdataservice: ChatDataService, 
     private _appicationdataservice: ApplicationDataService, 
     private localStorage: LocalStorageService,
+    private hubservice: HubService
   ) {
-    this.hubConnection = new HubConnectionBuilder()
-    .withUrl('http://172.23.238.230:5004/chat')
-    .build();
-
-    this.hubConnection.start().then(() => {}).catch(()=> {});
    }
 
   ngOnInit() {
@@ -67,19 +60,23 @@ export class SelectChannelComponent implements OnInit {
 
 
   addBot() {
-    
     this._chatdataservice.addBotToWorkspace(this.workspaceName, this.botUser).subscribe(
       data => {
         for (let selectedChannel of this.channelSelected) {
           this._chatdataservice.addBot(selectedChannel, this.botUserChannel).subscribe(data => {
-            this.hubConnection.invoke('sendAllUserChannel', this.botEmailId)
-              .catch(err => {});
-          });
+            console.log("Calling Chat Hub Method");
+            this.hubservice.addBotToParticularChannel(this.botEmailId).then();
+          },err => console.log("Bot Already Added To ", selectedChannel));
+        }
+      }, err => {
+        for (let selectedChannel of this.channelSelected) {
+          this._chatdataservice.addBot(selectedChannel, this.botUserChannel).subscribe(data => {
+            console.log("Calling Chat Hub Method");
+            this.hubservice.addBotToParticularChannel(this.botEmailId).then();
+          },err => console.log("Bot Already Added To ", selectedChannel));
         }
       }
     );
-    alert(`Bot Got Added To ${this.channelSelected.length} channel`);
-    //this.router.navigate([this.application.appUrl]);
-    //this.router.navigateByUrl(this.application.appUrl);
+    alert(`Bot Got Added To ${this.channelSelected.length} channel/s`);
   }
 }
