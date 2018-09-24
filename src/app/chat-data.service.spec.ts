@@ -32,9 +32,4 @@ describe('ChatDataService', () => {
       expect().nothing;
     })
   });
-
-  it('should be able to add bot to channel', () => {
-    let botUser: User;
-    chatservice.addBot("channelId", botUser).subscribe(data => expect().nothing);
-  });
 });
