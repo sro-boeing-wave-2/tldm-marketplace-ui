@@ -4,9 +4,6 @@ services:
   web:
     build: .
 
-    ports:
-        - "2100:4200"
-
     labels: 
       - "SERVICE_4200_NAME=marketplace-ui-service"
       - "SERVICE_TAG=marketplace-ui-serviceTag"

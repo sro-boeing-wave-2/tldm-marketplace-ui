@@ -14,6 +14,7 @@ const API_URL = environment.apiUrl;
 
 export class ApplicationDataService {
 
+  private _url = environment.onboardUrl;
   constructor(private  httpclient: HttpClient) { }
 
   getAll() {
@@ -44,7 +45,7 @@ export class ApplicationDataService {
       "password": "Bot",
       "workspace": "Bot"
     };
-    var _url="http://172.23.238.165:5000/api/onboarding/bot/verify"
+    var _url=`${this._url}/bot/verify`
     return this.httpclient.post(_url, loginViewModel, httpOptions)
     .pipe(catchError((error: HttpErrorResponse) => throwError(error.status || 'Server error')));
   }
