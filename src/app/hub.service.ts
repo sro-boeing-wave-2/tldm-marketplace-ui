@@ -9,7 +9,7 @@ export class HubService {
 
   constructor() { 
     this.hubConnection = new HubConnectionBuilder()
-    .withUrl('http://172.23.238.230:5004/chat')
+    .withUrl('localhost:80/connect/chat')
     .build();
 
     this.hubConnection.start().then(() => {}).catch(()=> {});

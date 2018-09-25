@@ -4,6 +4,7 @@ services:
   web:
     build: .
 
+
     labels: 
       - "SERVICE_4200_NAME=marketplace-ui-service"
       - "SERVICE_TAG=marketplace-ui-serviceTag"

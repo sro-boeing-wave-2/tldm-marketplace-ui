@@ -4,9 +4,10 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:80/marketplace',
-  chatApiUrl: 'http://localhost:80/connect/api',
-  onboardUrl: 'http://localhost:80/onboard'
+  apiUrl: 'http://13.233.42.222:80/marketplace',
+  chatApiUrl: 'http://13.233.42.222:80/connect/api',
+  onboardUrl: 'http://13.233.42.222:80/onboard',
+  chatHubUrl: 'http://13.233.42.222:80/connect/chat'
 };
 
 /*
