@@ -1,11 +1,8 @@
 <mat-toolbar>
   <span mat-card-avatar class="example-header-image"></span>
-  <span>MarketPlace</span>
+  <span>TL;DM MarketPlace</span>
   <span class="example-spacer"></span>
-  <a href="/marketplaceui?/"><button mat-button><mat-icon>home</mat-icon></button></a>
-  <a href="/marketplaceui/add"><button mat-button><mat-icon>add</mat-icon></button></a>
-
-  <!-- <a href="/"><button mat-button><mat-icon>home</mat-icon></button></a>
-  <a href="/add"><button mat-button><mat-icon>add</mat-icon></button></a> -->
+  <button mat-button routerLink="/"><mat-icon>home</mat-icon></button>
+  <button mat-button routerLink="/add"><mat-icon>add</mat-icon></button>
 </mat-toolbar>
 <router-outlet></router-outlet>

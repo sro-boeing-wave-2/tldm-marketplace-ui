@@ -6,6 +6,9 @@ import { ApplicationDataService } from '../application-data.service';
 import { UserChannel } from '../user-channel';
 import { LocalStorageService } from 'ngx-webstorage';
 import { HubService } from '../hub.service';
+import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
+import { environment } from '../../environments/environment.prod';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-select-channel',
@@ -34,25 +37,27 @@ export class SelectChannelComponent implements OnInit {
     lastName: "User",
     emailId: this.botEmailId,
   };
+  hubConnection: HubConnection;
+  private selectedChannelsDetail: Channel [];
 
   constructor(
     private _chatdataservice: ChatDataService, 
     private _appicationdataservice: ApplicationDataService, 
     private localStorage: LocalStorageService,
-    private hubservice: HubService
+    private router: Router
   ) {
+    this.hubConnection = new HubConnectionBuilder()
+    .withUrl("http://172.23.238.230:5004/chat")
+    .build();
+
+    this.hubConnection.start().then(() => {console.log("started")}).catch(()=> {});
    }
 
   ngOnInit() {
-    console.log(this.localStorage.retrieve("appId"));
-    console.log(+this.localStorage.retrieve("appId"));
     this._chatdataservice.getChannels(this.workspaceName, this.userName).subscribe(data => {
-      console.log("Data From Chat Team", data);
-      console.log(data);
       this.channels = data;
     });
     this._appicationdataservice.getById(this.appId).subscribe(data => {
-      console.log("Data From Marketplace Team", data);
       this.application = data;
     });
   }
@@ -60,23 +65,31 @@ export class SelectChannelComponent implements OnInit {
 
 
   addBot() {
+    for (let selectedChannel of this.channelSelected) {
+      let channel = this.channels.find(x => x.channelId == selectedChannel)
+      this.selectedChannelsDetail.push(channel);
+    }
+    this._appicationdataservice.setSelectedChannelDetails(this.selectedChannelsDetail);
     this._chatdataservice.addBotToWorkspace(this.workspaceName, this.botUser).subscribe(
       data => {
         for (let selectedChannel of this.channelSelected) {
           this._chatdataservice.addBot(selectedChannel, this.botUserChannel).subscribe(data => {
-            console.log("Calling Chat Hub Method");
-            this.hubservice.addBotToParticularChannel(this.botEmailId).then();
+            this.hubConnection.invoke('sendAllUserChannel', this.botEmailId)
+              .catch(err => {}).then(() => {
+              });
+            // this.hubservice.addBotToParticularChannel(this.botEmailId).then(data => console.log("success"), err => console.log("error"));
           },err => console.log("Bot Already Added To ", selectedChannel));
         }
       }, err => {
         for (let selectedChannel of this.channelSelected) {
           this._chatdataservice.addBot(selectedChannel, this.botUserChannel).subscribe(data => {
-            console.log("Calling Chat Hub Method");
-            this.hubservice.addBotToParticularChannel(this.botEmailId).then();
+            this.hubConnection.invoke('sendAllUserChannel', this.botEmailId)
+              .catch(err => console.log("ERROR FROM HUB METHOD",err)).then(() => {
+              });
+            // this.hubservice.addBotToParticularChannel(this.botEmailId).then(data => console.log("success"), err => console.log("error"));
           },err => console.log("Bot Already Added To ", selectedChannel));
         }
       }
     );
-    alert(`Bot Got Added To ${this.channelSelected.length} channel/s`);
   }
 }

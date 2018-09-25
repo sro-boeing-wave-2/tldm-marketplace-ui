@@ -22,16 +22,12 @@ export class ChatDataService {
   }
 
   addBotToWorkspace(workspaceName: string, botUser: User): Observable<User> {
-    console.log("Bot User");
-    console.log(botUser);
     return this.httpclient
       .put<User>(API_URL + `/chat/workspaces/user/${workspaceName}`, botUser)
       .pipe(catchError((error: HttpErrorResponse) => throwError(error.status || 'Server error')));
   }
   
   addBot(channelId: string, botUser: User): Observable<User> {
-    console.log("addng bot to channel");
-    console.log(botUser);
     return this.httpclient
       .put<User>(API_URL + `/chat/workspaces/channel/${channelId}`, botUser)
       .pipe(catchError((error: HttpErrorResponse) => throwError(error.status || 'Server error')));

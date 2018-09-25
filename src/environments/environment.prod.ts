@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://13.233.42.222:80/marketplace',
-  chatApiUrl: 'http://13.233.42.222:80/connect/api',
-  onboardUrl: 'http://13.233.42.222:80/onboard',
-  chatHubUrl: 'http://13.233.42.222:80/connect/chat'
+  apiUrl: 'http://172.23.238.206:7001/marketplace',
+  chatApiUrl: 'http://172.23.238.206:7001/connect/api',
+  onboardUrl: 'http://172.23.238.206:7001/onboard',
+  chatHubUrl: 'http://172.23.238.206:7001/connect/chat'
 };

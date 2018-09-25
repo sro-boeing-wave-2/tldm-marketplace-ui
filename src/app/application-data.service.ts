@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Application } from './application';
-import { Http, Response } from '@angular/http';
-import { map, catchError } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { environment } from '../environments/environment';
-import { Observable } from 'rxjs';
-import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
+import { Channel } from './channel';
 
 const API_URL = environment.apiUrl;
 
@@ -15,6 +15,16 @@ const API_URL = environment.apiUrl;
 export class ApplicationDataService {
 
   private _url = environment.onboardUrl;
+  private channels: Channel[];
+  private selectedChannels = new BehaviorSubject(this.channels);
+  public setSelectedChannelDetails(channels: Channel[]) {
+    this.selectedChannels.next(channels);
+  }
+
+  public getSelectedChannelDetails() {
+    return this.selectedChannels.asObservable();
+  }
+
   constructor(private  httpclient: HttpClient) { }
 
   getAll() {
@@ -35,18 +45,14 @@ export class ApplicationDataService {
   }
 
   public verifyDeveloperEmail(email: string) {
-    var httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
     var loginViewModel = {
       "emailId": email,
       "password": "Bot",
       "workspace": "Bot"
     };
     var _url=`${this._url}/bot/verify`
-    return this.httpclient.post(_url, loginViewModel, httpOptions)
+    return this.httpclient.post(_url, loginViewModel)
     .pipe(catchError((error: HttpErrorResponse) => throwError(error.status || 'Server error')));
   }
+
 }
