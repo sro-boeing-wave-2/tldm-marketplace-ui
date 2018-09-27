@@ -22,6 +22,7 @@ export class AppDetailsComponent implements OnInit {
     this.applicationdataservice.getById(this.selectedId).subscribe(data => {
       this.application=data; 
       this.localStorage.store("bot-email-id", data.emailId);
+      this.localStorage.store("name", data.name);
     });
   }
 

@@ -27,6 +27,7 @@ import { Ng2Webstorage } from 'ngx-webstorage';
 import { WorkspaceListComponent } from './workspace-list/workspace-list.component';
 import { AuthInterceptor } from './http.interceptor';
 import { LoginService } from './login.service';
+import { InstallBotComponent } from './install-bot/install-bot.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { LoginService } from './login.service';
     ApplicationsComponent,
     SelectChannelComponent,
     LoginComponent,
-    WorkspaceListComponent
+    WorkspaceListComponent,
+    InstallBotComponent
   ],
   imports: [
     AppRoutingModule,

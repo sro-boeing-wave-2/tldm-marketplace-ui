@@ -12,6 +12,7 @@
           <mat-form-field>
             <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="Password" required>
           </mat-form-field>
+          <div *ngIf="error" style="color: red;font-size: 13px;">* {{ error }}</div>
           <button mat-raised-button color="primary" type="submit">Login</button>
         </div>
       </form>

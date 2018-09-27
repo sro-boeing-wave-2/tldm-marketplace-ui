@@ -11,6 +11,8 @@ import { LocalStorageService } from 'ngx-webstorage';
 })
 export class LoginComponent implements OnInit {
   hide: boolean=true;
+  error: string;
+  emailValid: string;
   // @Output() sendDataToChild = new EventEmitter();
   loginForm = this.fb.group({
     EmailId: [''],
@@ -26,6 +28,13 @@ export class LoginComponent implements OnInit {
       this.localStorage.store("token", data["token"]);
       this.localStorage.store("email", this.loginForm.value.EmailId);
       this.router.navigate(['/workspaces']);
+    }, err => {
+      console.log(err);
+      if(err == "401") {
+        this.error = "Invalid Username/Password"
+      } else if(err == "500") {
+        this.error = "Oops!!! Something Went Wrong"
+      }
     });
   }
 }

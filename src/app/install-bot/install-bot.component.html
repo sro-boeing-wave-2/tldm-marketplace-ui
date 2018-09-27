@@ -1,0 +1,23 @@
+<mat-grid-list cols="5" rowHeight="100%">
+  <mat-grid-tile colspan="1"></mat-grid-tile>
+  <mat-grid-tile colspan="3">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>{{botName}} Got installed to</mat-card-title>
+        <mat-card-subtitle>the following channels</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          <mat-list role="list">
+            <mat-list-item role="listitem" *ngFor="let channel of botInstalledChannels">{{channel.channelName}}</mat-list-item>
+          </mat-list>
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button routerLink="/">Install Another Bot</button>
+        <a [href]="chatUIUrl"><button mat-button>Open Chat Window</button></a>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1"></mat-grid-tile>
+</mat-grid-list>

@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./select-channel.component.css']
 })
 export class SelectChannelComponent implements OnInit {
+  hubUrl: string = environment.chatHubUrl;
   workspaceName: string = this.localStorage.retrieve("workspace");//"TLDM";
   userName: string = this.localStorage.retrieve("email"); //"rishabh120296@gmail.com";
   botEmailId: string = this.localStorage.retrieve("bot-email-id");
@@ -25,20 +26,20 @@ export class SelectChannelComponent implements OnInit {
   application;
   botUser: User = {
     id: "60681125-e117-4bb2-9287-eb840c4cf67e",
-    firstName: "Bot",
-    lastName: "User",
+    firstName: this.localStorage.retrieve("name"),
+    lastName: "Bot",
     emailId: this.botEmailId
   };
 
   botUserChannel: UserChannel = {
     id: "101010101010101010101010",
     userId: "60681125-e117-4bb2-9287-eb840c4cf67e",
-    firstName: "Bot",
-    lastName: "User",
+    firstName: this.localStorage.retrieve("name"),
+    lastName: "Bot",
     emailId: this.botEmailId,
   };
   hubConnection: HubConnection;
-  private selectedChannelsDetail: Channel [];
+  private selectedChannelsDetail: Channel []=[];
 
   constructor(
     private _chatdataservice: ChatDataService, 
@@ -47,7 +48,7 @@ export class SelectChannelComponent implements OnInit {
     private router: Router
   ) {
     this.hubConnection = new HubConnectionBuilder()
-    .withUrl("http://172.23.238.230:5004/chat")
+    .withUrl(this.hubUrl)
     .build();
 
     this.hubConnection.start().then(() => {console.log("started")}).catch(()=> {});
@@ -91,5 +92,6 @@ export class SelectChannelComponent implements OnInit {
         }
       }
     );
+    this.router.navigate(["added-bot"]);
   }
 }

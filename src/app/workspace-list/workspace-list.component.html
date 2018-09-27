@@ -1,19 +1,9 @@
-<mat-card class="example-card">
-  <mat-card-header>
-    <mat-card-title>
-      <h1>List Of Workspaces You are Part Of</h1>
-      <h4>Kindly Select in which Workspace you want to add bot</h4>
-    </mat-card-title>
-  </mat-card-header>
-  <div class="InputContent">
-    <mat-card-content>
-      <mat-grid-list cols="4" rowHeight="2:1">
-        <mat-grid-tile *ngFor="let workspace of workspaces">
-
-            <button mat-raised-button color="primary" (click)="getChannels(workspace)">{{workspace}}</button>
-
-        </mat-grid-tile>
-      </mat-grid-list>
-    </mat-card-content>
+<div class="mailbg">
+  <h1>Here's list of your all workspaces.</h1>
+  <h4>Select the Workspace to add bot</h4>
+  <div class="workspacelist">
+    <div *ngFor="let workspace of workspaces">
+      <button class="sendmess" (click)="getChannels(workspace)">{{workspace}}</button>
+    </div>
   </div>
-</mat-card>
+</div>
