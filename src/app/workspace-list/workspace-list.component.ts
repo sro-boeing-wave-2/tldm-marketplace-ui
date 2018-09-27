@@ -16,12 +16,17 @@ export class WorkspaceListComponent implements OnInit {
     this.loginservice.getAllWorkspaces().subscribe(data => {
       this.workspaces = data;
       console.log(data);
-    }, error => console.log(error));
+    }, error => {
+      console.log(error);
+      if(error == "401") {
+        this.router.navigate(["login"]);
+      }
+    });
   }
 
   getChannels(workspace) 
   {
-    this.localStorage.store("workspace", workspace);
+    this.localStorage.store("workspacename", workspace);
     this.router.navigate(['channels']);
   }
 }

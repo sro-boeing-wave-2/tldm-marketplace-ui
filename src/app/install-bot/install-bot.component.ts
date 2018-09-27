@@ -19,8 +19,7 @@ export class InstallBotComponent implements OnInit {
 
   ngOnInit() {
     this.botName = this.localStorage.retrieve("name");
-    this.chatUIUrl =`${environment.chatUIUrl}?workspace=${this.localStorage.retrieve('workspace')}`;
+    this.chatUIUrl =`${environment.chatUIUrl}?workspace=${this.localStorage.retrieve('workspacename')}`;
     this.appservice.getSelectedChannelDetails().subscribe(channels => this.botInstalledChannels = channels);
   }
-
 }

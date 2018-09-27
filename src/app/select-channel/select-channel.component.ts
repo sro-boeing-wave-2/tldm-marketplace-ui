@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 })
 export class SelectChannelComponent implements OnInit {
   hubUrl: string = environment.chatHubUrl;
-  workspaceName: string = this.localStorage.retrieve("workspace");
+  workspaceName: string = this.localStorage.retrieve("workspacename");
   userName: string = this.localStorage.retrieve("email");
   botEmailId: string = this.localStorage.retrieve("bot-email-id");
   channels: Channel[];

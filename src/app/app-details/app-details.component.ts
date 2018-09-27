@@ -16,6 +16,7 @@ export class AppDetailsComponent implements OnInit {
   constructor(private activatedroute: ActivatedRoute, private applicationdataservice: ApplicationDataService, private router: Router, private localStorage: LocalStorageService) { }
 
   ngOnInit() {
+    console.log("App Detail Component Loaded")
     this.activatedroute.paramMap.subscribe((params: ParamMap) => {
       this.selectedId = params.get('id');
     });
@@ -29,7 +30,15 @@ export class AppDetailsComponent implements OnInit {
   install(id) {
     this.localStorage.store("appId", id);
     console.log(this.localStorage.retrieve("appId"));
-    this.router.navigate(['login']);
+    var token = this.localStorage.retrieve("token");
+    console.log("PRINTING TOKEN FROM CHAT TEAM");
+    console.log(token);
+    if(this.localStorage.retrieve("token") != undefined && this.localStorage.retrieve("workspacename") != undefined) {
+      this.router.navigate(['/channels']);
+      console.log("redirect to workspace");
+    } else{
+      console.log("redirect to login");
+      this.router.navigate(['login']);
+    }
   }
-
 }
