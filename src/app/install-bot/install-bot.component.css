@@ -49,6 +49,9 @@
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
   }
+  mat-list-item {
+      align-items: center;
+  }
   a {
     text-decoration: none;
     color: #C4D7F2;
@@ -72,7 +75,7 @@
     margin-left: 5%;
     color: #C4D7F2;
   }
-  h4 {
+  h3 {
     margin-left: 5%;
     color: #C4D7F2;
   }
@@ -114,4 +117,3 @@
     letter-spacing: 1px;
     text-transform: none;
   }
-  
