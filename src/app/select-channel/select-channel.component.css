@@ -135,7 +135,7 @@ mat-card {
  /* Handle */
  ::-webkit-scrollbar-thumb {
   background: #888;
-  border-radius: 5px
+  border-radius: 5px;
  }
  /* Handle on hover */
  ::-webkit-scrollbar-thumb:hover {
@@ -145,4 +145,8 @@ mat-card {
  .mat-card-actions .mat-button:first-child, .mat-card-actions .mat-raised-button:first-child {
   margin-left: 50%;
   margin-right: 0;
+}
+
+* {
+  color: #C4D7F2;
 }
