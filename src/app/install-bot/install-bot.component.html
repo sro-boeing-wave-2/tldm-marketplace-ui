@@ -1,4 +1,4 @@
-<mat-grid-list cols="5" rowHeight="100%">
+<!-- <mat-grid-list cols="5" rowHeight="100%">
   <mat-grid-tile colspan="1"></mat-grid-tile>
   <mat-grid-tile colspan="3">
     <mat-card class="example-card">
@@ -20,4 +20,15 @@
     </mat-card>
   </mat-grid-tile>
   <mat-grid-tile colspan="1"></mat-grid-tile>
-</mat-grid-list>
+</mat-grid-list> -->
+
+<div class="mailbg">
+  <h1>{{botName}} Got Installed to the following channels</h1>
+  <label class="l1">Here are those channels</label>
+    <mat-list role="list">
+      <mat-list-item role="listitem" *ngFor="let channel of botInstalledChannels">{{channel.channelName}}</mat-list-item>
+    </mat-list>
+    <button class="sendmess" routerLink="/">Marketplace Home</button>
+        <a [href]="chatUIUrl"><button class="sendmess">Open Chat Window</button></a>
+  <!-- <button (click)="addBot()" class="sendmess">Next</button> -->
+ </div>
