@@ -69,13 +69,13 @@ export class SelectChannelComponent implements OnInit {
       data => {
         for (let selectedChannel of this.channelSelected) {
           this._chatdataservice.addBot(selectedChannel, this.botUserChannel).subscribe(data => {
-            this.hubservice.addBotToParticularChannel(this.botEmailId).then(data => console.log("success"), err => console.log("error"));
+            this.hubservice.addBotToParticularChannel(this.botEmailId);
           },err => console.log("Bot Already Added To ", selectedChannel));
         }
       }, err => {
         for (let selectedChannel of this.channelSelected) {
           this._chatdataservice.addBot(selectedChannel, this.botUserChannel).subscribe(data => {
-            this.hubservice.addBotToParticularChannel(this.botEmailId).then(data => console.log("success"), err => console.log("error"));
+            this.hubservice.addBotToParticularChannel(this.botEmailId);
           },err => console.log("Bot Already Added To ", selectedChannel));
         }
       }

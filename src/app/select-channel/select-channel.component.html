@@ -1,44 +1,11 @@
-<!-- <mat-grid-list cols="3" rowHeight="100%">
-  <mat-grid-tile></mat-grid-tile>
-  <mat-grid-tile>
-    <mat-card>
-      <h3>Select the channels where you want to install the bot: </h3>
-      <mat-selection-list [(ngModel)] = channelSelected #selectedChannels>
-        <mat-list-option *ngFor="let channel of channels" [value] = channel.channelId>
-          {{channel.channelName}}
-        </mat-list-option>
-      </mat-selection-list>
-
-      <h4>
-        Channels selected: {{selectedChannels.selectedOptions.selected.length}}
-      </h4>
-      <mat-card-actions>
-        <button (click)="addBot()" mat-raised-button color="primary">Next</button>
-      </mat-card-actions>
-    </mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile></mat-grid-tile>
-</mat-grid-list> -->
-
 <div class="mailbg">
-  <h3>Select the channels where you want to install the bot: </h3>
-  <div class="workspacelist">
-      <mat-card>
-          <mat-selection-list [(ngModel)] = channelSelected #selectedChannels>
-            <mat-list-option *ngFor="let channel of channels" [value] = channel.channelId>
-              {{channel.channelName}}
-            </mat-list-option>
-          </mat-selection-list>
-    
-          <h4>
-            Channels selected: {{selectedChannels.selectedOptions.selected.length}}
-          </h4>
-          <mat-card-actions>
-            <button class="sendmess" (click)="addBot()" mat-raised-button color="primary">Next</button>
-          </mat-card-actions>
-        </mat-card>
-    <!-- <div *ngFor="let workspace of workspaces">
-      <button class="sendmess" (click)="getChannels(workspace)">{{workspace}}</button>
-    </div> -->
-  </div>
-</div>
+  <h1>Install Bots</h1>
+  <h4>Select the channels where you want to install the bot: </h4>
+  <label class="l1">Select your channels</label>
+  <mat-selection-list [(ngModel)]=channelSelected #selectedChannels>
+    <mat-list-option *ngFor="let channel of channels" [value] = channel.channelId>
+      {{channel.channelName}}
+    </mat-list-option>
+  </mat-selection-list>
+  <button (click)="addBot()" class="sendmess">Next</button>
+ </div>
