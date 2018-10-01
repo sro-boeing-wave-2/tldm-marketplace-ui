@@ -26,14 +26,12 @@ export class AddAppComponent implements OnInit {
   }
 
   addApplication() {
-    console.log("HI");
     this.applicationDataService
       .addApplication(this.newApplication)
       .subscribe(
         (newApplication) => {
           this.applications = this.applications.concat(newApplication);
           this.applicationDataService.verifyDeveloperEmail(this.newApplication.emailId).subscribe(data => {
-            console.log("Email Sent");
             this.newApplication = new Application();
             this.router.navigate(['']);
           });

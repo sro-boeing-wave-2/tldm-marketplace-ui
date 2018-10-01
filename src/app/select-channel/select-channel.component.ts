@@ -8,7 +8,6 @@ import { LocalStorageService } from 'ngx-webstorage';
 import { HubService } from '../hub.service';
 import { environment } from '../../environments/environment.prod';
 import { Router } from '@angular/router';
-import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
 
 @Component({
   selector: 'app-select-channel',
@@ -39,7 +38,6 @@ export class SelectChannelComponent implements OnInit {
     emailId: this.botEmailId,
   };
   private selectedChannelsDetail: Channel []=[];
-  //hubconnection: HubConnection;
 
   constructor(
     private _chatdataservice: ChatDataService, 
@@ -48,13 +46,6 @@ export class SelectChannelComponent implements OnInit {
     private router: Router,
     private hubservice: HubService
   ) {
-    // this.hubconnection = new HubConnectionBuilder()
-    //   .withUrl('http://13.233.42.222/chat-api/chat')
-    //   .build();
-    // this.hubconnection.serverTimeoutInMilliseconds = 6000000;
-    // this.hubconnection.start().then(() => {
-    //   console.log("started");
-    // }).catch(() => { });
    }
 
   ngOnInit() {
@@ -78,35 +69,16 @@ export class SelectChannelComponent implements OnInit {
       data => {
         for (let selectedChannel of this.channelSelected) {
           this._chatdataservice.addBot(selectedChannel, this.botUserChannel).subscribe(data => {
-            //this.hubservice.addBotToParticularChannel(this.botEmailId);
-            // this.hubconnection.start().then(() => {
-            //   console.log("started");
-            //   this.hubconnection.invoke('sendAllUserChannel', this.botEmailId)
-            //   .catch(err => console.log("ERROR FROM HUB METHOD", err));
-            // }).catch(() => { });
             this.hubservice.addBotToParticularChannel(this.botEmailId);
           },err => {
-            console.log("Bot Already Added To ", selectedChannel);
             this.hubservice.addBotToParticularChannel(this.botEmailId);
-            // this.hubconnection.invoke('sendAllUserChannel', this.botEmailId)
-            //   .then(() => {console.log("INVOKED HUB METHOD")})
-            //   .catch(err => console.log("ERROR FROM HUB METHOD", err));
           });
         }
       }, err => {
         for (let selectedChannel of this.channelSelected) {
           this._chatdataservice.addBot(selectedChannel, this.botUserChannel).subscribe(data => {
-            // this.hubconnection.start().then(() => {
-            //   console.log("started");
-            //   this.hubconnection.invoke('sendAllUserChannel', this.botEmailId)
-            //   .catch(err => console.log("ERROR FROM HUB METHOD", err));
-            // }).catch(() => { });
             this.hubservice.addBotToParticularChannel(this.botEmailId);
           },err => {
-            console.log("Bot Already Added To ", selectedChannel);
-              // this.hubconnection.invoke('sendAllUserChannel', this.botEmailId)
-              // .then(() => {console.log("INVOKED HUB METHOD")})
-              // .catch(err => console.log("ERROR FROM HUB METHOD", err));
               this.hubservice.addBotToParticularChannel(this.botEmailId);
           });
         }
