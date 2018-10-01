@@ -18,6 +18,7 @@ export class HubService {
   }
 
   public addBotToParticularChannel(emailId: string) {
+    console.log("Calling Hub Method");
     this.hubConnection.start().then(() => {
       console.log("connection started");
       this.hubConnection.invoke('sendAllUserChannel', emailId)
