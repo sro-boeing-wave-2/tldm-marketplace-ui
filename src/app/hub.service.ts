@@ -8,20 +8,21 @@ import { environment } from '../environments/environment.prod';
 export class HubService {
   hubConnection: HubConnection;
 
-  constructor() { 
+  constructor() {
     console.log("Hub Connection Started");
     this.hubConnection = new HubConnectionBuilder()
-    .withUrl(environment.chatHubUrl)
-    .build();
+      .withUrl(environment.chatHubUrl)
+      .build();
+      this.hubConnection.serverTimeoutInMilliseconds = 6000000;
     console.log("Hub Connection Ended");
   }
 
   public addBotToParticularChannel(emailId: string) {
     this.hubConnection.start().then(() => {
-      console.log("started");
+      console.log("connection started");
       this.hubConnection.invoke('sendAllUserChannel', emailId)
-        .then(() => {console.log("HUB CONNECTION INVOKED")})
-        .catch(err => console.log("ERROR FROM HUB METHOD",err));
-    }).catch(()=> {console.log("Error")});
+        .then(() => { console.log("HUB CONNECTION INVOKED") })
+        .catch(err => console.log("ERROR FROM HUB METHOD", err));
+    }).catch(() => { console.log("Error") });
   }
 }
