@@ -3,8 +3,6 @@ version: '3.4'
 services:
   web:
     build: .
-    ports:
-      - "2222:4200"
     labels: 
       - "SERVICE_4200_NAME=marketplace-ui-service"
       - "SERVICE_TAG=marketplace-ui-serviceTag"
