@@ -11,7 +11,7 @@ import { LocalStorageService } from 'ngx-webstorage';
 })
 export class AppDetailsComponent implements OnInit {
   selectedId;
-  application;
+  application: Application;
 
   constructor(private activatedroute: ActivatedRoute, private applicationdataservice: ApplicationDataService, private router: Router, private localStorage: LocalStorageService) { }
 

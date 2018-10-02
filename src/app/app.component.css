@@ -24,3 +24,15 @@ mat-toolbar {
   top: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
 }
+
+.copyright p {
+  position: relative;
+  bottom: 0;
+  font-size: 14px;
+  color: #040F0F;
+  letter-spacing: 1px;
+  text-transform: none;
+}
+.copyright {
+  text-align: center;
+}

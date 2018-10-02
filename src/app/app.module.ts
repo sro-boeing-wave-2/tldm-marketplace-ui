@@ -28,6 +28,8 @@ import { WorkspaceListComponent } from './workspace-list/workspace-list.componen
 import { AuthInterceptor } from './http.interceptor';
 import { LoginService } from './login.service';
 import { InstallBotComponent } from './install-bot/install-bot.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 
 @NgModule({
   declarations: [
@@ -57,7 +59,8 @@ import { InstallBotComponent } from './install-bot/install-bot.component';
     MatCheckboxModule,
     ReactiveFormsModule,
     HttpClientModule,
-    Ng2Webstorage
+    Ng2Webstorage,
+    FlexLayoutModule
   ],
   providers: [ApplicationDataService, 
     LoginService, {

@@ -1,14 +1,15 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build ---prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
+const baseUrl = "http://13.233.42.222:80";
 
 export const environment = {
   production: false,
-  apiUrl: 'http://13.233.42.222:80/marketplace-api',
-  chatApiUrl: 'http://13.233.42.222:80/chat-api/api',
-  onboardUrl: 'http://13.233.42.222:80/onboard-api',
-  chatHubUrl: 'http://13.233.42.222:80/chat-api/chat',
-  chatUIUrl: 'http://13.233.42.222:80/chat'
+  apiUrl: baseUrl+'/marketplace-api',
+  chatApiUrl: baseUrl+'/chat-api/api',
+  onboardUrl: baseUrl+'/onboard-api',
+  chatHubUrl: baseUrl+'/chat-api/chat',
+  chatUIUrl: baseUrl+'/chat'
 };
 
 

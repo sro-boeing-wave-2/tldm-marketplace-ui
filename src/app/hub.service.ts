@@ -9,16 +9,13 @@ export class HubService {
   hubConnection: HubConnection;
 
   constructor() {
-    console.log("Hub Connection Started");
     this.hubConnection = new HubConnectionBuilder()
       .withUrl(environment.chatHubUrl)
       .build();
       this.hubConnection.serverTimeoutInMilliseconds = 6000000;
-    console.log("Hub Connection Ended");
   }
 
   public addBotToParticularChannel(emailId: string) {
-    console.log("Calling Hub Method");
     this.hubConnection.start().then(() => {
       console.log("connection started");
       this.hubConnection.invoke('sendAllUserChannel', emailId)
