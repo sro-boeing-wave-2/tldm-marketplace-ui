@@ -22,6 +22,7 @@ before_script:
 
 script:
   - chmod +x ./deploy.sh
+  - ng build
   - ng test --watch=false
 
 after_success:

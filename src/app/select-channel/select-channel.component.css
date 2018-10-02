@@ -17,11 +17,11 @@
   margin-left: 5%;
 }
 .mailbg {
-  margin-left: 49%;
-  margin-top: 19%; /* changed for responsive design */
-  /* position: absolute;
+  /* margin-left: 49%;
+  margin-top: 19%; changed for responsive design */
+  position: absolute;
   left: 50%;
-  top: 60%; */
+  top: 60%;
   width: 80vw;
   max-width: 400px;
   min-height: 400px;
@@ -33,7 +33,7 @@
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-/* .mailbg:before {
+.mailbg:before {
   content: "";
   position: absolute;
   right: 50%;
@@ -47,7 +47,7 @@
   -ms-transform: translate(0%, -0%);
   transform: translate(0%, -0%);
   transform: rotate(0deg);
-} */
+}
 h1 {
   margin-left: 5%;
   color: #C4D7F2;
