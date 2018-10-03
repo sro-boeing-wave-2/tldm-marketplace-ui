@@ -1,12 +1,28 @@
-<mat-toolbar>
+<!-- <mat-toolbar>
   <span mat-card-avatar class="example-header-image"></span>
   <span>TL;DM Marketplace</span>
   <span class="example-spacer"></span>
   <button mat-button routerLink="/"><mat-icon>home</mat-icon></button>
   <button mat-button routerLink="/add"><mat-icon>add</mat-icon></button>
-</mat-toolbar>
-<router-outlet></router-outlet>
-
-<div class="copyright">
-  <p> © 2018 TLDM-Marketplace. All rights reserved </p>
+</mat-toolbar> -->
+<div class="container" fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="0px" fxLayoutGap.xs="0">
+  <div class="item main-content" fxFlex="100%" fxFlexOffset.xs="0">
+    <mat-toolbar>
+      <span mat-card-avatar class="example-header-image"></span>
+      <span>TL;DM Marketplace</span>
+      <span class="example-spacer"></span>
+      <button mat-button routerLink="/"><mat-icon>home</mat-icon></button>
+      <button mat-button routerLink="/add"><mat-icon>add</mat-icon></button>
+    </mat-toolbar>
+  </div>
+  <div class="item main-content" fxFlex="100%" fxFlexOffset.xs="0">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="item main-content" fxFlex="100%" fxFlexOffset.xs="0">
+    <div class="copyright">
+      <p> © 2018 TLDM-Marketplace. All rights reserved </p>
+    </div>
+  </div>
 </div>
+
+

@@ -18,7 +18,7 @@ button {
   background-size: cover;
 }
 
-mat-toolbar {
+mat-toolbar{
   overflow: hidden;
   background-color: #333;
   top: 0; /* Position the navbar at the top of the page */
@@ -26,8 +26,11 @@ mat-toolbar {
 }
 
 .copyright p {
-  position: relative;
-  bottom: 0;
+  /* position: relative;
+  bottom: 0; */
+  /* position: relative;
+  bottom: 10%;
+  left: 41%; */
   font-size: 14px;
   color: #040F0F;
   letter-spacing: 1px;
@@ -35,4 +38,6 @@ mat-toolbar {
 }
 .copyright {
   text-align: center;
+  font-weight: bold;
 }
+

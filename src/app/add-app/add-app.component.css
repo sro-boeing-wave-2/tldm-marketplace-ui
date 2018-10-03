@@ -3,18 +3,43 @@
   flex-direction: column;
 }
 
-.example-container > * {
+
+.container {
+  margin-top: 1%;
+}
+/* .example-container > * {
   width: 100%;
+} */
+/* mat-grid-list {
+  height: auto;
+} */
+
+.main-content {
+  /* margin-top: 1%; */
 }
 
-mat-card {
+/* mat-card {
   width: 100%;
+} */
+
+/* mat-card-tile {
+  height: auto;
+} */
+
+.error {
+  color: red;
+  font-style: italic;
+  font-size: 13px;
 }
 
-button {
+/* button {
  float: right;
+} */
+mat-card-actions {
+  text-align: center;
 }
 
 mat-grid-list {
   margin-top: 1%;
 }
+

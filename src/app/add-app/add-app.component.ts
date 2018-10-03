@@ -11,10 +11,16 @@ import { Router } from '@angular/router';
 
 })
 export class AddAppComponent implements OnInit {
+  emailNotVaild: string;
+  nameNotValid: string;
+  developerNotValid: string;
+  appUrlNotValid: string;
+  flag: number=1;
 
   newApplication: Application = new Application();
 
   applications: Application[] = [];
+  regex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/g;
 
 
   @Output()
@@ -26,6 +32,26 @@ export class AddAppComponent implements OnInit {
   }
 
   addApplication() {
+    if(this.newApplication.name == undefined) {
+      this.nameNotValid = "* App Name Cannot Be Null";
+      this.flag=0;
+    }
+    if(this.newApplication.emailId == undefined || this.regex.test(this.newApplication.emailId) == false) {
+      this.emailNotVaild = "* Email Not Valid";
+      this.flag=0;
+    }
+    if(this.newApplication.developer == undefined) {
+      this.developerNotValid = "* Developer Name Cannot Be Null";
+      this.flag=0;
+    }
+    if(this.newApplication.appUrl == undefined) {
+      this.appUrlNotValid = "* App Url Cannot Be Null";
+      this.flag=0;
+    }
+    if(this.flag == 0) {
+      return;
+    }
+    console.log("Not Coming Here");
     this.applicationDataService
       .addApplication(this.newApplication)
       .subscribe(
