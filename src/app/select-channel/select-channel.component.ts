@@ -29,7 +29,6 @@ export class SelectChannelComponent implements OnInit {
     lastName: "Bot",
     emailId: this.botEmailId
   };
-
   botUserChannel: UserChannel = {
     id: "101010101010101010101010",
     userId: "60681125-e117-4bb2-9287-eb840c4cf67e",
@@ -49,6 +48,11 @@ export class SelectChannelComponent implements OnInit {
    }
 
   ngOnInit() {
+    if(this.botEmailId == "tldm.sms.bot@gmail.com") {
+      this.botUser.id=this.appId;
+      this.botUserChannel.id="101010101010101010101011";
+      this.botUserChannel.userId=this.appId;
+    }
     this._chatdataservice.getChannels(this.workspaceName, this.userName).subscribe(data => {
       this.channels = data;
     });
