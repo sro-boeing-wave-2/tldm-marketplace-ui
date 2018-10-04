@@ -110,11 +110,13 @@ mat-list-option, mat-selection-list, mat-pseudo-checkbox, .mat-pseudo-checkbox {
 h1 {
   margin-left: 5%;
   color: black;
+  text-align: center;
 }
 
 h4 {
   margin-left: 5%;
   color:black;
+  text-align: center;
 }
 
 .l1 {

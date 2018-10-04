@@ -4,8 +4,8 @@
      fxLayoutAlign="center"
      fxLayoutGap="0px"
      fxLayoutGap.xs="0">
-  <div class="item main-content" fxFlex="35%" fxFlex.md="55%" fxFlex.sm="60%">
-      <mat-card>
+  <div class="item main-content" fxFlex="35%" fxLayoutAlign="center" fxFlex.md="55%" fxFlex.sm="60%">
+      <!-- <mat-card>
           <mat-card-title>Login</mat-card-title>
           <mat-card-subtitle>Enter your TL;DM Login credentials to install the integration</mat-card-subtitle>
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
@@ -20,6 +20,49 @@
               <button mat-raised-button color="primary" type="submit">Login</button>
             </div>
           </form>
-        </mat-card>
+        </mat-card> -->
+        <div class="mailbg">
+          <h1>Sign in</h1>
+          <h4>Enter your email and password</h4>
+          <form [formGroup]=" loginForm" (ngSubmit)="onSubmit()">
+            <label class="l1" for="mailinput">Email :</label>
+            <input class="mailinput" type="text" placeholder="" formControlName="EmailId" required>
+            <label class="l1" for="mailinput">Password:</label>
+            <input class="mailinput" placeholder="" type="password" formControlName="Password" required>
+            <p *ngIf="error" class="unauthorised">
+              {{error}}
+            </p>
+            <div>
+              <button class="sendmess" type="submit">Sign in</button>
+            </div>
+          </form>
+        </div>
   </div>
 </div>
+
+
+<!-- 
+<div class="hero-image">
+  <div style="width: 100%; height: 80vh;">
+    <div class="mailbg">
+      <h1>Sign in</h1>
+      <h4>Enter your email and password</h4>
+      <form [formGroup]=" loginForm" (ngSubmit)="onSubmit()">
+        <label class="l1" for="mailinput">Email :</label>
+        <input class="mailinput" type="text" placeholder="" formControlName="EmailId" required>
+        <label class="l1" for="mailinput">Password:</label>
+        <input class="mailinput" placeholder="" type="password" formControlName="Password" required>
+        <p *ngIf="error" class="unauthorised">
+          Invalid Email or Password
+        </p>
+        <div>
+          <button class="sendmess" type="submit">Sign in</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="copyright">
+    <p> © 2018 TL;DM . All rights reserved </p>
+  </div>
+</div> -->

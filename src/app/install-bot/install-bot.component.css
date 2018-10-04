@@ -54,6 +54,7 @@
     width: 80vw;
     max-width: 400px;
     min-height: 300px;
+    text-align: center;
   }
   mat-list-item {
       align-items: center;
@@ -134,4 +135,12 @@
 
   .display-buttons {
     text-align: center;
+  }
+
+  mat-list-item {
+    text-align: center;
+  }
+
+  button, a {
+    cursor: pointer;
   }

@@ -38,7 +38,7 @@
             <h3>{{botName}} Got Installed to the following channels</h3>
             <h4 class="l1">Here are those channels</h4>
               <mat-list role="list">
-                <mat-list-item role="listitem" *ngFor="let channel of botInstalledChannels">{{channel.channelName}}</mat-list-item>
+                <mat-list-item role="listitem" *ngFor="let channel of botInstalledChannels"><h3>{{channel.channelName}}</h3></mat-list-item>
               </mat-list>
               <div class="container display-buttons" fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="0px" fxLayoutGap.xs="0">
                   <div class="item main-content" fxFlex="40%" fxFlexOffset.xs="0" fxFlexAlign="center">
