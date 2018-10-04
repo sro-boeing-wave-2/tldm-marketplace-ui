@@ -34,7 +34,7 @@
     font-size: 15px;
     margin-left: 5%;
   }
-  .mailbg {
+  /* .mailbg {
     position: absolute;
     left: 50%;
     top: 60%;
@@ -48,15 +48,21 @@
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+  } */
+
+  .mailbg {
+    width: 80vw;
+    max-width: 400px;
+    min-height: 300px;
   }
   mat-list-item {
       align-items: center;
   }
   a {
     text-decoration: none;
-    color: #C4D7F2;
+    color: black;
 }
-  .mailbg:before {
+  /* .mailbg:before {
     content: "";
     position: absolute;
     right: 50%;
@@ -70,24 +76,31 @@
     -ms-transform: translate(0%, -0%);
     transform: translate(0%, -0%);
     transform: rotate(0deg);
-  }
-  h1 {
+  } */
+  h3, h4 {
+    text-align: center;
     margin-left: 5%;
-    color: #C4D7F2;
-  }
-  h3 {
-    margin-left: 5%;
-    color: #C4D7F2;
+    color: black;
   }
   .l1 {
     margin-left: 5%;
-    color: #AFDEDC;
+    color: black;
   }
   mat-list-option, mat-selection-list, mat-pseudo-checkbox, .mat-pseudo-checkbox, mat-list, mat-list-item {
-    color: white !important;
+    color: black !important;
   }
   .sendmess {
-    margin-left: 50%;
+    text-align: center;
+    height: 50px;
+    font-weight: bold;
+    font-size: 1.2em;
+    width: max-content;
+    background: #34344A;
+    color: #AFDEDC;
+    /* background-color: chartreuse; */
+    padding: 13px;
+    margin: 20px;
+    /* margin-left: 50%;
     margin-top: 5%;
     margin-bottom: 5%;
     -webkit-transform: translate(-50%, -0%);
@@ -102,6 +115,7 @@
     background: #34344A;
     line-height: 40px;
     cursor: pointer;
+    width: max-content; */
   }
   .sendmess:focus {
     outline: none;
@@ -116,4 +130,8 @@
     color: #040F0F;
     letter-spacing: 1px;
     text-transform: none;
+  }
+
+  .display-buttons {
+    text-align: center;
   }

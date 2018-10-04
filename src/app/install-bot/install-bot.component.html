@@ -22,7 +22,7 @@
   <mat-grid-tile colspan="1"></mat-grid-tile>
 </mat-grid-list> -->
 
-<div class="mailbg">
+<!-- <div class="mailbg">
   <h3>{{botName}} Got Installed to the following channels</h3>
   <label class="l1">Here are those channels</label>
     <mat-list role="list">
@@ -30,5 +30,26 @@
     </mat-list>
     <button class="sendmess" routerLink="/">Marketplace Home</button>
         <a [href]="chatUIUrl"><button class="sendmess">Open Chat Window</button></a>
-  <!-- <button (click)="addBot()" class="sendmess">Next</button> -->
- </div>
+ </div> -->
+
+ <div class="container" fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="0px" fxLayoutGap.xs="0">
+    <div class="item main-content" fxFlex="40%" fxFlexOffset.xs="0" fxFlexAlign="center">
+        <div class="mailbg">
+            <h3>{{botName}} Got Installed to the following channels</h3>
+            <h4 class="l1">Here are those channels</h4>
+              <mat-list role="list">
+                <mat-list-item role="listitem" *ngFor="let channel of botInstalledChannels">{{channel.channelName}}</mat-list-item>
+              </mat-list>
+              <div class="container display-buttons" fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="0px" fxLayoutGap.xs="0">
+                  <div class="item main-content" fxFlex="40%" fxFlexOffset.xs="0" fxFlexAlign="center">
+                      <button class="sendmess" routerLink="/">Home</button>  
+                      <a [href]="chatUIUrl"><button class="sendmess">Chat Window</button></a>
+                  </div>
+                    <!-- <div class="item main-content" fxFlex="40%" fxFlexOffset.xs="0" fxFlexAlign="center">
+                    </div> -->
+              </div>
+              
+            <!-- <button (click)="addBot()" class="sendmess">Next</button> -->
+           </div>
+    </div>
+  </div>

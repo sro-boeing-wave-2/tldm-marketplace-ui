@@ -10,3 +10,7 @@ mat-card {
 button {
  float: right;
 }
+
+.main-content {
+  margin-top: 1%;
+}

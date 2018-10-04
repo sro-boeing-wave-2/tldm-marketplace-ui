@@ -1,4 +1,4 @@
-<div class="mailbg">
+<!-- <div class="mailbg">
   <h1>Here's list of your all workspaces.</h1>
   <h4>Select the Workspace to add bot</h4>
   <div class="workspacelist">
@@ -6,4 +6,25 @@
       <button class="sendmess" (click)="getChannels(workspace)">{{workspace}}</button>
     </div>
   </div>
-</div>
+</div> -->
+<div class="container" fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="0px" fxLayoutGap.xs="0">
+    <div class="item main-content" fxFlex="40%" fxFlexOffset.xs="0" fxFlexAlign="center">
+        <div class="mailbg">
+            <h1>Here's list of your all workspaces.</h1>
+            <h4>Select the Workspace to add bot</h4>
+            <div class="workspacelist">
+              <div *ngFor="let workspace of workspaces">
+                <!-- <a [href]="_url+'?email='+currentEmail+'&workspace='+workspace"> -->
+                <a (click)="getChannels(workspace)">
+                  <mat-card style="width: 100%"> {{workspace}}</mat-card>
+                </a>
+                <h1></h1>
+              </div>
+            </div>
+          </div>
+    </div>
+  </div>
+
+  
+  
+  

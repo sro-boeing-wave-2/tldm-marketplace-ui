@@ -1,4 +1,4 @@
-
+/* 
    .main-toolbar {
     background-color: #34344A;
     color: white;
@@ -115,13 +115,126 @@
   ::-webkit-scrollbar {
     width: 8px;
    }
-   /* Track */
-   /* Handle */
+
    ::-webkit-scrollbar-thumb {
     background: #888;
     border-radius: 5px
    }
-   /* Handle on hover */
    ::-webkit-scrollbar-thumb:hover {
     background: #555;
+   } */
+
+   .main-toolbar {
+    background-color: #320e3b;
+    color: white;
+  }
+  
+  
+  .unauthorised {
+    color: red;
+    font-size: 15px;
+    margin-left: 5%;
+  }
+  
+  .required {
+    color: #F2F3D9;
+    font-size: 15px;
+    margin-left: 5%;
+  }
+  
+  .mailbg {
+    width: 80vw;
+    max-width: 400px;
+    min-height: 300px;
+  }
+  
+  
+  h1 {
+    margin-left: 5%;
+    color: black;
+  }
+  
+  h4 {
+    margin-left: 5%;
+    color:black;
+  }
+  
+  .l1 {
+    margin-left: 5%;
+    color: #AFDEDC;
+  }
+  
+  .mailinput {
+    box-sizing: border-box;
+    border: none;
+    padding: 5px;
+    margin-left: 50%;
+    margin-top: 2%;
+    width: 90%;
+    height: 50px;
+    resize: none;
+    font-size: 1.2em;
+    -webkit-transform: translate(-50%, -0%);
+    -ms-transform: translate(-50%, -0%);
+    transform: translate(-50%, -0%);
+  }
+  
+  .mailinput:focus {
+    outline: none;
+  }
+  
+  .sendmess {
+    margin-left: 50%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    -webkit-transform: translate(-50%, -0%);
+    -ms-transform: translate(-50%, -0%);
+    transform: translate(-50%, -0%);
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #AFDEDC;
+    background: #320e3b;
+    line-height: 40px;
+    cursor: pointer;
+  }
+  
+  .sendmess:focus {
+    outline: none;
+  }
+  
+  
+  .workspacelist {
+    overflow-y: scroll;
+    max-height: 300px;
+    overflow-x: hidden;
+    width: 100%;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 8px;
+   }
+ 
+   ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px
+   }
+  
+   ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+   }
+  
+   .container {
+     margin-top: 1%;
+    /* background-image: url("http://www.freegreatpicture.com/files/147/6651-background-color.jpg");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; */
+   }
+
+   a:hover {
+     cursor: pointer;
    }
