@@ -1,6 +1,5 @@
-<!-- <mat-grid-list cols="3" rowHeight="100%">
-  <mat-grid-tile></mat-grid-tile>
-  <mat-grid-tile>
+<div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="0px" fxLayoutGap.xs="0">
+  <div class="item main-content" fxFlex="35%" fxFlex.md="55%" fxFlex.sm="60%">
     <mat-card>
       <div class="example-container">
         <mat-card-title>
@@ -12,6 +11,7 @@
         <mat-form-field>
           <input matInput placeholder="App Name" [(ngModel)]="newApplication.name" required>
         </mat-form-field>
+        <p class="error" *ngIf="nameNotValid">{{nameNotValid}}</p>
         <mat-form-field>
           <textarea matInput placeholder="App Info" [(ngModel)]="newApplication.info"></textarea>
         </mat-form-field>
@@ -22,9 +22,11 @@
         <mat-form-field>
           <input matInput placeholder="Developer Name" [(ngModel)]="newApplication.developer" required>
         </mat-form-field>
+        <p class="error" *ngIf="developerNotValid">{{developerNotValid}}</p>
         <mat-form-field>
           <input matInput placeholder="App URL" [(ngModel)]="newApplication.appUrl" required>
         </mat-form-field>
+        <p class="error" *ngIf="appUrlNotValid">{{appUrlNotValid}}</p>
         <mat-form-field>
           <input matInput placeholder="App Logo URL" [(ngModel)]="newApplication.logoUrl">
         </mat-form-field>
@@ -33,51 +35,5 @@
         </mat-card-actions>
       </div>
     </mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile></mat-grid-tile>
-</mat-grid-list> -->
-
-<div class="container"
-     fxLayout
-     fxLayout.xs="column"
-     fxLayoutAlign="center"
-     fxLayoutGap="0px"
-     fxLayoutGap.xs="0">
-  <div class="item main-content" fxFlex="35%" fxFlex.md="55%" fxFlex.sm="60%">
-      <mat-card>
-          <div class="example-container">
-            <mat-card-title>
-              New App Registration
-            </mat-card-title>
-            <mat-card-subtitle>
-              Enter the following info to register your app to the tl;dm marketplace
-            </mat-card-subtitle>
-            <mat-form-field>
-              <input matInput placeholder="App Name" [(ngModel)]="newApplication.name" required>
-            </mat-form-field>
-            <p class="error" *ngIf="nameNotValid">{{nameNotValid}}</p>
-            <mat-form-field>
-              <textarea matInput placeholder="App Info" [(ngModel)]="newApplication.info"></textarea>
-            </mat-form-field>
-            <mat-form-field>
-              <input matInput placeholder="Email" [(ngModel)]="newApplication.emailId" required>
-            </mat-form-field>
-            <p class="error" *ngIf="emailNotVaild">{{emailNotVaild}}</p>
-            <mat-form-field>
-              <input matInput placeholder="Developer Name" [(ngModel)]="newApplication.developer" required>
-            </mat-form-field>
-            <p class="error" *ngIf="developerNotValid">{{developerNotValid}}</p>
-            <mat-form-field>
-              <input matInput placeholder="App URL" [(ngModel)]="newApplication.appUrl" required>
-            </mat-form-field>
-            <p class="error" *ngIf="appUrlNotValid">{{appUrlNotValid}}</p>
-            <mat-form-field>
-              <input matInput placeholder="App Logo URL" [(ngModel)]="newApplication.logoUrl">
-            </mat-form-field>
-            <mat-card-actions>
-              <button mat-raised-button color="primary" (click)="addApplication()" type="submit" value="submit">Create</button>
-            </mat-card-actions>
-          </div>
-        </mat-card>
   </div>
 </div>

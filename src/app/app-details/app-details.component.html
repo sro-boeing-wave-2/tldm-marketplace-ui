@@ -1,32 +1,9 @@
-<!-- <mat-grid-list cols="5" rowHeight="70%">
-  <mat-grid-tile colspan="2" *ngIf="application">
-    <mat-card class="main-card">
-      <img mat-card-image [src]="application.logoUrl">
-      <mat-card-actions>
-        <button (click)= "install(application.id)" mat-stroked-button color="primary">Install</button>
-      </mat-card-actions>
-    </mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile colspan="3">
-    <mat-card class="info-card">
-      <mat-card-title>{{application?.name}}</mat-card-title>
-      <mat-card-subtitle>By {{application?.developer}}</mat-card-subtitle>
-      <mat-card-content>{{ application?.info }}</mat-card-content>
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list> -->
-
-<div class="container"
-     fxLayout
-     fxLayout.xs="column"
-     fxLayoutAlign="center"
-     fxLayoutGap="0px"
-     fxLayoutGap.xs="0">
-  <div fxFlexAlign.xs="center" class="item applogo" fxFlex="40%"  fxFlexOffset.xs="0">
+<div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="0px" fxLayoutGap.xs="0">
+  <div fxFlexAlign.xs="center" class="item applogo" fxFlex="40%" fxFlexOffset.xs="0">
     <mat-card class="main-card" fxShow="true" fxHide.xs="true">
       <img mat-card-image [src]="application?.logoUrl">
       <mat-card-actions>
-        <button (click)= "install(application.id)" mat-stroked-button color="primary">Install</button>
+        <button (click)="install(application.id)" mat-stroked-button color="primary">Install</button>
       </mat-card-actions>
     </mat-card>
   </div>
@@ -36,26 +13,8 @@
       <mat-card-subtitle>By {{application?.developer}}</mat-card-subtitle>
       <mat-card-content>{{ application?.info }}</mat-card-content>
       <mat-card-actions fxShow.xs="true" fxHide="true">
-        <button (click)= "install(application.id)" mat-stroked-button color="primary">Install</button>
+        <button (click)="install(application.id)" mat-stroked-button color="primary">Install</button>
       </mat-card-actions>
     </mat-card>
   </div>
 </div>
-
-<!-- <mat-grid-list cols="5" rowHeight="70%">
-  <mat-grid-tile colspan="2" *ngIf="application">
-    <mat-card class="main-card">
-      <img mat-card-image [src]="application.logoUrl">
-      <mat-card-actions>
-        <button (click)= "install(application.id)" mat-stroked-button color="primary">Install</button>
-      </mat-card-actions>
-    </mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile colspan="3">
-    <mat-card class="info-card">
-      <mat-card-title>{{application?.name}}</mat-card-title>
-      <mat-card-subtitle>By {{application?.developer}}</mat-card-subtitle>
-      <mat-card-content>{{ application?.info }}</mat-card-content>
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list> -->

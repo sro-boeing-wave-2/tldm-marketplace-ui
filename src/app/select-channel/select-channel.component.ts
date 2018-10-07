@@ -55,7 +55,7 @@ export class SelectChannelComponent implements OnInit {
     }
     this._chatdataservice.getChannels(this.workspaceName, this.userName).subscribe(data => {
       this.channels = data;
-    });
+    }, _ => this.router.navigate(['login']));
     this._appicationdataservice.getById(this.appId).subscribe(data => {
       this.application = data;
     });

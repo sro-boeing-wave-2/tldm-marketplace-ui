@@ -1,35 +1,16 @@
-<!-- <div class="mailbg">
-  <h1>Install Bots</h1>
-  <h4>Select the channels where you want to install the bot: </h4>
-  <label class="l1">Select your channels</label>
-  <mat-selection-list [(ngModel)]=channelSelected #selectedChannels>
-    <mat-list-option *ngFor="let channel of channels" [value] = channel.channelId>
-      {{channel.channelName}}
-    </mat-list-option>
-  </mat-selection-list>
-  <button (click)="addBot()" class="sendmess">Next</button>
- </div> -->
-
- <div class="container" fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="0px" fxLayoutGap.xs="0">
-    <div class="item main-content" fxFlex="40%" fxFlexOffset.xs="0" fxFlexAlign="center">
-        <div class="mailbg">
-            <h1>Install Bots</h1>
-            <h4>Select the channels where you want to install the bot: </h4>
-            <div class="workspacelist">
-                <mat-selection-list [(ngModel)]=channelSelected #selectedChannels>
-                    <mat-list-option *ngFor="let channel of channels" [value] = channel.channelId>
-                      {{channel.channelName}}
-                    </mat-list-option>
-                  </mat-selection-list>
-                  <button (click)="addBot()" class="sendmess">Next</button>
-              <!-- <div *ngFor="let workspace of workspaces">
-                 <a [href]="_url+'?email='+currentEmail+'&workspace='+workspace"> -->
-                <!--<a (click)="getChannels(workspace)">
-                  <mat-card style="width: 100%"> {{workspace}}</mat-card>
-                </a>
-                <h1></h1>
-              </div> -->
-            </div>
-          </div>
+<div class="container" fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="0px" fxLayoutGap.xs="0">
+  <div class="item main-content" fxFlex="40%" fxFlexOffset.xs="0" fxFlexAlign="center">
+    <div class="mailbg">
+      <h1>Install Bots</h1>
+      <h4>Select the channels where you want to install the bot: </h4>
+      <div class="workspacelist">
+        <mat-selection-list [(ngModel)]=channelSelected #selectedChannels>
+          <mat-list-option *ngFor="let channel of channels" [value]=c hannel.channelId>
+            {{channel.channelName}}
+          </mat-list-option>
+        </mat-selection-list>
+        <button (click)="addBot()" class="sendmess">Next</button>
+      </div>
     </div>
   </div>
+</div>
